@@ -12,8 +12,9 @@ const Messages = ({ auth, messages, users, deleteMessage }) => (
           id={key}
           {...message}
           user={users[message.uid]}
-          belongsToCurrentUser={auth.uid && message.uid === auth.uid}
+          belongsToCurrentUser={(auth.uid && message.uid === auth.uid) }
           deleteMessage={deleteMessage(key)}
+          viewingAsAdmin={users[auth.uid] && users[auth.uid].admin}
         />
       ))
     }

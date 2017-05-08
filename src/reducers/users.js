@@ -10,6 +10,9 @@ export default function usersReducer(state = initialState.users, action) {
         email: action.email,
         photoURL: action.photoURL
       }});
+    case 'ADD_ADMIN':
+      const newUserState = extend(clone(state[action.uid]), { admin: true })
+      return extend(clone(state), { [action.uid]: newUserState })
     default:
       return state;
   }
